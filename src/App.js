@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+function App() {
+  const [state, setSafeState] = useState({ text: "", checked: false })
+
+  return (
+    <div className="App">
+      Learn React v{React.version}
+      <input type="text" onChange={e => setSafeState({ ...state, text: e.target.value })}/>
+      <input type="checkbox" onChange={e => setSafeState({ ...state, checked: e.target.checked })}/>
+      <p>{state.text} - {state.checked.toString()}</p>
+    </div>
+  )
 }
 
-export default App;
+export default App
